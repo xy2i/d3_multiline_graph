@@ -275,13 +275,14 @@ export default class DataCompressionComp extends Component {
     }  
 
     const zoomBehavior = d3.zoom()
-      // .scaleExtent([0.1, 5])
+      //.scaleExtent([0.1, 5])
       .translateExtent([
         [0, 0],
         [this.width, this.height]
       ])
       .on("zoom", () => {
-        const zoomState = d3.zoomTransform(this.svg.node());
+        const zoomState = d3.event.transform;
+        d3.select('#lines').attr('transform', zoomState)
         this.setState({currentZoomState:zoomState})
 
         for(let i=0; i<document.querySelectorAll("circle").length ; i++){
@@ -439,14 +440,73 @@ export default class DataCompressionComp extends Component {
 
     this.lines = this.svg
     .append('g')
+    .attr('id', 'lines')
     .attr(
       'transform',
       'translate(' + this.margin.left + ', ' + this.margin.top + ')'
     )
 
-    this.updateChart();
-
     this.lines.attr('clip-path', 'url(#cut_off)');
+
+    // Tooltip
+    const tooltip = d3.select('#tooltip')
+    const tooltipLine = d3.select('#lines').append('line').attr('id', 'tooltipLine');
+
+    let tooltipBox;
+    const drawTooltip = () => {
+      // Date under the cursor.
+      const cursorDate = this.metricObject.xScale.invert(d3.mouse(tooltipBox.node())[0])
+
+      // Get the dates from the ticks.
+      let tickDates = this.metricObject.xAxis.scale().ticks().sort(function(a, b) {
+            var distancea = Math.abs(cursorDate - a);
+            var distanceb = Math.abs(cursorDate - b);
+            return distancea - distanceb; // sort a before b when the distance is smaller
+        });
+
+      // Create a bisector, finding the neareast value.
+      const bisect = d3.bisector(d => d.newDate).left
+
+      const bisectorValues = []
+      this.metricBucket.forEach((m, i) => {
+        const p = this.join(m);
+        const bisector = bisect(this.metricObject['data_' + p], cursorDate)
+        bisectorValues.push(bisector)
+      });
+
+      tooltipLine
+        .attr('stroke', 'red')
+        .attr('x1', this.metricObject.xScale(tickDates[0])) 
+        .attr('x2', this.metricObject.xScale(tickDates[0]))
+        .attr('y1', 0)
+        .attr('y2', this.height)
+
+      // Create the tooltip.
+      const xFormat = d3.timeFormat("%d-%b %H:%M");
+      let tooltipString = `<div style="color: white">${xFormat(cursorDate)}</div>`
+      this.metricBucket.forEach((m, i) => {
+        const p = this.join(m);
+        const yFormat = this.metricObject['yScale_' + p].tickFormat()
+        tooltipString += `
+        <div style="color: ${this.color[i]}">${p}: ${yFormat(this.metricObject['data_' + p][bisectorValues[i]].value)}</div>
+        `
+      });
+
+      tooltip.html(tooltipString)
+        .style('display', 'block')
+        .style('left', `${d3.event.pageX + 20}px`)
+        .style('top', `${d3.event.pageY + 20}px`)
+    }
+
+    const removeTooltip = ()=> {
+      if (tooltip) tooltip.style('display', 'none');
+      if (tooltipLine) tooltipLine.attr('stroke', 'none');
+    }
+
+    tooltipBox = this.svg.on("mousemove", drawTooltip)
+    .on('mouseout', removeTooltip);
+           
+    this.updateChart();
   }
 
   updateChart() {
@@ -459,7 +519,6 @@ export default class DataCompressionComp extends Component {
         .attr('fill', 'none')
         .attr('stroke', this.color[i])
     });
-           
   }
 
   render() {
@@ -492,7 +551,7 @@ export default class DataCompressionComp extends Component {
                 <input type="text" id="lname" name="lname"/>
             </div> */}
           </div>
-
+          <div id='tooltip' style={{position: 'absolute', backgroundColor: 'black', opacity: '0.8', padding: '0.5rem', borderRadius: '5px', boxShadow: '0 0 10px 0 rgba(0,0,0,.15)', pointerEvents: 'none', display:'none'}} ref={node => (this.tooltipNode = node)}></div>
         </div>
         <div>
         <Button variant="default" style={{marginTop: "-91px", marginLeft: "19px"}} disabled>
