@@ -424,6 +424,8 @@ var graphdata = [
         this.metricObject['yScale_' + p]
       ));
 
+  console.log("========= Metric Bucket ===========", this.metricBucket[i],JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")), JSON.parse(sessionStorage.getItem("checkedYAxisArray")).includes(this.metricBucket[i]))
+  if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && !JSON.parse(sessionStorage.getItem("checkedYAxisArrayName").includes(this.metricBucket[i]))){
     this.gAxis
       .append("g")
       .attr(
@@ -539,6 +541,125 @@ var graphdata = [
         }
         node.classed('isZoom', !zoom);
       });
+    }
+
+    else{
+      this.gAxis
+        .append("g")
+        .attr(
+          'transform',
+          'translate(' +
+            // (this.width - this.margin.right + i * 50 - 5) +
+            (this.margin.axisRight + i * 40 + 10) +
+            ', ' +
+            (this.hAxis - 440) +
+            ') rotate(90)'
+        )  
+        .append('circle')
+        .attr("class", "isZoomFalse")
+        .attr("id", "circle"+this.metricBucket[i])
+        .attr('cx', '-1')
+        .attr("cy", "8")
+        .attr("r", "8")
+        .attr("stroke", "#007BFF")
+        .attr("stroke-width", "2")
+        .attr("fill", "#007BFF")
+        .on("click", (d, j, n) => {
+          const node = d3.select(n[j]);
+          const zoom = node.classed('isZoom');
+          if(!zoom){
+            if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
+              sessionStorage.setItem("checkedYAxisArray", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArray")), i]))
+              sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")), this.metricBucket[i]]))
+  
+            }
+            else{
+              sessionStorage.setItem("checkedYAxisArray", JSON.stringify([i]))
+              sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify([this.metricBucket[i]]))
+  
+            }
+            node
+            .attr("stroke", "#007BFF")
+            .attr("stroke-width", "2")
+            .attr("fill", "#007BFF")
+            .attr("class", "isZoomTrue")
+          // if ((document.querySelector("#circlePD306") == null) || (document.querySelector("#circlePD306") && document.querySelector("#circlePD306").getAttribute("fill") == "#007BFF")){
+          // if((document.querySelector("#formPD306") == null) && (document.querySelector("#formPD306") && document.querySelectorAll("#formPD306").length != 1)){
+          if(true){
+            let divZoom =  document.getElementById("y-zoom-min-max")  
+            let formElement =  document.createElement("form");
+            // formElement.setAttribute("onSubmit",{this.filterGraphData})
+            formElement.setAttribute("id","form"+this.metricBucket[i])
+            formElement.addEventListener("submit", this.filterGraphDataArrayFunction )
+  
+            let heading5 = document.createElement("h5");
+            let h5textnode = document.createTextNode(this.metricBucket[i]);
+  
+            let labelMin = document.createElement("label");
+            labelMin.setAttribute("for", "minValue"+this.metricBucket[i])
+            let labelMinTextNode = document.createTextNode("Min:");
+            labelMin.appendChild(labelMinTextNode)
+  
+            let inputMin = document.createElement("input")
+            inputMin.setAttribute("style", 'width: 87px; margin-left: 2px')
+            inputMin.setAttribute("type", "text")
+            inputMin.setAttribute("id", "minValue"+this.metricBucket[i])
+            inputMin.setAttribute("name", "minValue"+this.metricBucket[i])
+  
+  
+            let labelMax = document.createElement("label");
+            labelMax.setAttribute("for", "maxValue"+this.metricBucket[i])
+            let labelMaxTextNode = document.createTextNode("Max:");
+            labelMax.setAttribute("style", "margin-left: 4px")
+            labelMax.appendChild(labelMaxTextNode)
+  
+            let inputMax = document.createElement("input")
+            inputMax.setAttribute("style", 'width: 87px; margin-left: 2px')
+            inputMax.setAttribute("type", "text")
+            inputMax.setAttribute("id", "maxValue"+this.metricBucket[i])
+            inputMax.setAttribute("name", "maxValue"+this.metricBucket[i])
+  
+            let inputSubmit = document.createElement("input")
+            inputSubmit.setAttribute("style", "margin-left: 4px")
+            // inputSubmit.setAttribute("onClick", "#")
+            inputSubmit.setAttribute("type", "submit")
+            inputSubmit.setAttribute("value", "Plot")
+  
+  
+            heading5.appendChild(h5textnode)
+            formElement.appendChild(heading5)
+            formElement.appendChild(labelMin)
+            formElement.appendChild(inputMin)
+            formElement.appendChild(labelMax)
+            formElement.appendChild(inputMax)
+            formElement.appendChild(inputSubmit)
+  
+            divZoom.appendChild(formElement)
+          }
+  
+          }
+          if(zoom){
+            if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
+              let filterCheckedYAxisArray = JSON.parse(sessionStorage.getItem("checkedYAxisArray")).filter(x => x != i)
+              let filterCheckedYAxisArrayName = JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")).filter(x => x != this.metricBucket[i])
+  
+              sessionStorage.setItem("checkedYAxisArray", JSON.stringify(filterCheckedYAxisArray))
+              sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify(filterCheckedYAxisArrayName))
+  
+            }
+  
+            node
+            .attr("stroke", "#007BFF")
+            .attr("stroke-width", "2")
+            .attr("fill", "white")    
+            .attr("class", "isZoomFalse")
+  
+            let formElementToRemove = document.getElementById("form"+this.metricBucket[i])
+            formElementToRemove.remove()
+          }
+          node.classed('isZoom', !zoom);
+        });
+      }
 
       this.gAxis
       .append()
