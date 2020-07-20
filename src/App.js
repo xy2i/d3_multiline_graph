@@ -565,7 +565,7 @@ var graphdata = [
         .attr("r", "8")
         .attr("stroke", "#007BFF")
         .attr("stroke-width", "2")
-        .attr("fill", "#007BFF")
+        .attr("fill", "green")
         .on("click", (d, j, n) => {
           const node = d3.select(n[j]);
           const zoom = node.classed('isZoom');
@@ -588,7 +588,9 @@ var graphdata = [
             .attr("class", "isZoomTrue")
           // if ((document.querySelector("#circlePD306") == null) || (document.querySelector("#circlePD306") && document.querySelector("#circlePD306").getAttribute("fill") == "#007BFF")){
           // if((document.querySelector("#formPD306") == null) && (document.querySelector("#formPD306") && document.querySelectorAll("#formPD306").length != 1)){
-          if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && !JSON.parse(sessionStorage.getItem("checkedYAxisArrayName").includes(this.metricBucket[i]))){            let divZoom =  document.getElementById("y-zoom-min-max")  
+          // if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && !JSON.parse(sessionStorage.getItem("checkedYAxisArrayName").includes(this.metricBucket[i]))){            
+          if(true){
+            let divZoom =  document.getElementById("y-zoom-min-max")  
             let formElement =  document.createElement("form");
             // formElement.setAttribute("onSubmit",{this.filterGraphData})
             formElement.setAttribute("id","form"+this.metricBucket[i])
