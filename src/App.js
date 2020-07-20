@@ -423,8 +423,7 @@ var graphdata = [
       const axis = (this.metricObject['yAxis_' + p] = d3.axisRight(
         this.metricObject['yScale_' + p]
       ));
-
-  console.log("========= Metric Bucket ===========", this.metricBucket[i],JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")), JSON.parse(sessionStorage.getItem("checkedYAxisArray")).includes(this.metricBucket[i]))
+      
   if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && !JSON.parse(sessionStorage.getItem("checkedYAxisArrayName").includes(this.metricBucket[i]))){
     this.gAxis
       .append("g")
@@ -771,17 +770,22 @@ var graphdata = [
       // Create a bisector, finding the neareast value.
       const bisect = d3.bisector(d => d.newDate).left
 
-      const bisectorValues = []
+
+      const values = []
       this.metricBucket.forEach((m, i) => {
         const p = this.join(m);
-        const bisector = bisect(this.metricObject['data_' + p], cursorDate)
-        bisectorValues.push(bisector)
-      });
+        const bisectorIndex = bisect(this.metricObject['data_' + p], cursorDate)
+        const data = this.metricObject['data_' + p]
 
-      // let tooltipString;
-      // if(this.metricObject['data_FDA50'][bisectorValues[0]] === undefined){
-      //   tooltipString = `div style="color: white">No data</div>`
-      // } else {
+        // Find the closest value, whether to the left or to the right.
+        // To do so, compare the two values closest to the cursor
+        // and the cursor's scaled position to each of them.  
+		    const d0 = data[bisectorIndex - 1],
+		          d1 = data[bisectorIndex],
+              d = cursorDate - d0.newDate > d1.newDate - cursorDate ? d1 : d0;
+              console.log(d0)
+        values.push(d.value)
+      });
       tooltipLine
         .attr('stroke', 'black')
         .attr('x1', this.metricObject.xScale(tickDates[0])) 
@@ -796,10 +800,9 @@ var graphdata = [
         const p = this.join(m);
         const yFormat = this.metricObject['yScale_' + p].tickFormat()
         tooltipString += `
-        <div style="color: ${this.color[i]}">${p}: ${yFormat(this.metricObject['data_' + p][bisectorValues[i]] && this.metricObject['data_' + p][bisectorValues[i]].value)}</div>
+        <div style="color: ${this.color[i]}">${p}: ${yFormat(values[i])}</div>
         `
       });
-    // }
 
       tooltip.html(tooltipString)
         .style('display', 'block')
