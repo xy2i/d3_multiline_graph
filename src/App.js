@@ -783,7 +783,6 @@ var graphdata = [
 		    const d0 = data[bisectorIndex - 1],
 		          d1 = data[bisectorIndex],
               d = cursorDate - d0.newDate > d1.newDate - cursorDate ? d1 : d0;
-              console.log(d0)
         values.push(d.value)
       });
       tooltipLine
