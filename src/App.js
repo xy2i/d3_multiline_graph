@@ -5,113 +5,143 @@ import * as d3 from 'd3';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
 
-var graphdata =    [{"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:52:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:04:55Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:23:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:49:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:54:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:58:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:05:15Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:42:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:55:55Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:04:15Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:20:55Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:03:55Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:24:55Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:27:15Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:48:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:50:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:53:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:00:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:05:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:09:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:30:55Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:41:35Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:43:15Z"},
-                    {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:03:15Z"},
-                    //FD203
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T17:48:35Z"},
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T18:00:35Z"},
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:04:15Z"},
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T17:49:35Z"},
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:24:55Z"},
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:03:55Z"},
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:04:55Z"},
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:03:15Z"},
-                    {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:23:35Z"},
-                    {"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:55:55Z"},
-                    {"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:20:55Z"},
-                    {"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:30:55Z"},
-                    {"name":"FD203","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:52:35Z"},
-                    {"name":"FD203","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:54:35Z"},
-                    {"name":"FD203","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:50:35Z"},
-                    {"name":"FD203","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:53:35Z"},
-                    {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T17:27:15Z"},
-                    {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:43:15Z"},
-                    {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T17:58:35Z"},
-                    {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:05:15Z"},
-                    {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:05:35Z"},
-                    {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:41:35Z"},
-                    {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:42:35Z"},
-                    {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:09:35Z"},
-                    //Combustor Temp
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:55:55Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:03:15Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:04:15Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:27:15Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:48:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:49:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:52:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:41:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:42:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:03:55Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:53:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:05:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:09:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:50:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:54:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:58:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:00:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:05:15Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:20:55Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:30:55Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:43:15Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:04:55Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:23:35Z"},
-                    {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:24:55Z"},
-                    //PD306
-                    {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:48:35Z"},
-                    {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:50:35Z"},
-                    {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:49:35Z"},
-                    {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:27:15Z"},
-                    {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:20:55Z"},
-                    {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:30:55Z"},
-                    {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:41:35Z"},
-                    {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:42:35Z"},
-                    {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:43:15Z"},
-                    {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T17:58:35Z"},
-                    {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T17:53:35Z"},
-                    {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T17:52:35Z"},
-                    {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T17:54:35Z"},
-                    {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T18:00:35Z"},
-                    {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T18:05:35Z"},
-                    {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T18:09:35Z"},
-                    {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T18:05:15Z"},
-                    {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:03:15Z"},
-                    {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:03:55Z"},
-                    {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:23:35Z"},
-                    {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T19:55:55Z"},
-                    {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:24:55Z"},
-                    {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:04:15Z"},
-                    {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:04:55Z"}
-                    ]
+var filterGraphDataArray = [
+  {"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:55:55Z"},{"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:20:55Z"},{"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:30:55Z"},
+    {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T17:48:35Z"},
+  {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T18:00:35Z"},
+  {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:04:15Z"},
+  {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T17:49:35Z"},
+  {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:24:55Z"},
+  {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:03:55Z"},
+  {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:04:55Z"},
+  {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:03:15Z"},
+  {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:23:35Z"},
+  {"name":"FD2033333","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:55:55Z"},
+  {"name":"FD2033333","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:20:55Z"},
+  {"name":"FD2033333","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:30:55Z"},
+  {"name":"FD2033333","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:52:35Z"},
+  {"name":"FD2033333","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:54:35Z"},
+  {"name":"FD2033333","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:50:35Z"},
+  {"name":"FD2033333","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:53:35Z"},
+  {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T17:27:15Z"},
+  {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:43:15Z"},
+  {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T17:58:35Z"},
+  {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:05:15Z"},
+  {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:05:35Z"},
+  {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:41:35Z"},
+  {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:42:35Z"},
+  {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:09:35Z"}]
 
-export default class DataCompressionComp extends Component {
+var graphdata = [
+  // {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:52:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:04:55Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:23:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:49:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:54:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:58:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:05:15Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:42:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:55:55Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:04:15Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:20:55Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:03:55Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:24:55Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:27:15Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:48:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:50:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:53:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:00:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:05:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:09:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:30:55Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:41:35Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:43:15Z"},
+//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:03:15Z"},
+ //FD203
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T17:48:35Z"},
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T18:00:35Z"},
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:04:15Z"},
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T17:49:35Z"},
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:24:55Z"},
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:03:55Z"},
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:04:55Z"},
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:03:15Z"},
+ {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T20:23:35Z"},
+ {"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:55:55Z"},
+ {"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:20:55Z"},
+ {"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:30:55Z"},
+ {"name":"FD203","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:52:35Z"},
+ {"name":"FD203","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:54:35Z"},
+ {"name":"FD203","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:50:35Z"},
+ {"name":"FD203","value":"0.000408333","unit":"m3/s","date":"2020-07-13T17:53:35Z"},
+ {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T17:27:15Z"},
+ {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:43:15Z"},
+ {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T17:58:35Z"},
+ {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:05:15Z"},
+ {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:05:35Z"},
+ {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:41:35Z"},
+ {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:42:35Z"},
+ {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:09:35Z"},
+ //Combustor Temp
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:55:55Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:03:15Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:04:15Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:27:15Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:48:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:49:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:52:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:41:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:42:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:03:55Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:53:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:05:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:09:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:50:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:54:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:58:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:00:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:05:15Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:20:55Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:30:55Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:43:15Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:04:55Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:23:35Z"},
+//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:24:55Z"},
+ //PD306
+ {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:48:35Z"},
+ {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:50:35Z"},
+ {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:49:35Z"},
+ {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:27:15Z"},
+ {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:20:55Z"},
+ {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:30:55Z"},
+ {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:41:35Z"},
+ {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:42:35Z"},
+ {"name":"PD306","value":"-116","unit":"Pa","date":"2020-07-13T19:43:15Z"},
+ {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T17:58:35Z"},
+ {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T17:53:35Z"},
+ {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T17:52:35Z"},
+ {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T17:54:35Z"},
+ {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T18:00:35Z"},
+ {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T18:05:35Z"},
+ {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T18:09:35Z"},
+ {"name":"PD306","value":"-114","unit":"Pa","date":"2020-07-13T18:05:15Z"},
+ {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:03:15Z"},
+ {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:03:55Z"},
+ {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:23:35Z"},
+ {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T19:55:55Z"},
+ {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:24:55Z"},
+ {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:04:15Z"},
+ {"name":"PD306","value":"-88","unit":"Pa","date":"2020-07-13T20:04:55Z"}
+ ]
+
+ export default class DataCompressionComp extends Component {
   constructor(props){
     super(props);
     this.state={
       currentZoomState:null,
-      checkedYAxisArray: []
+      checkedYAxisArray: [],
+      graphdata: graphdata
+
     }
   }
   join(m) {
@@ -134,9 +164,9 @@ export default class DataCompressionComp extends Component {
   color = [
     '#1f77b4',
     '#ad2191',
-    '#ff7f0e',
-    '#a89f23',
     '#2ca02c',
+    '#a89f23',
+    '#ff7f0e', 
     '#6740db',
     '#d62728',
     '#ff9896',
@@ -164,7 +194,7 @@ export default class DataCompressionComp extends Component {
     //   "Pump Current",
     //   "Total Running Time"
     // ];
-    this.metricBucket = [...new Set(graphdata.map(x => x.name))];
+    this.metricBucket = [...new Set(this.state.graphdata.map(x => x.name))];
     this.svg = d3.select('#comparisonChartSVG');
     this.svgAxis = d3.select('#comparisonAxisSVG');
     // this.width = this.svg.attr("viewBox").split(" ")[2];
@@ -238,7 +268,7 @@ export default class DataCompressionComp extends Component {
     const dateExt = [];
     this.metricBucket.forEach(m => {
       const p = this.join(m);
-      this.metricObject['data_' + p] = graphdata.filter(
+      this.metricObject['data_' + p] = this.state.graphdata.filter(
         d => d.name === m
       );
       if (this.metricObject['data_' + p].length > 0) {
@@ -259,11 +289,15 @@ export default class DataCompressionComp extends Component {
 
     //ZOOM
     if(this.state.currentZoomState)  {
+      if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length == 0){
+        const newXScale = this.state.currentZoomState.rescaleX(this.metricObject.xScale) 
+        this.metricObject.xScale.domain(newXScale.domain())
+      }
       for(let x=0; x < this.metricBucket.length; x++){
         if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).includes(x)){
 
-          const newXScale = this.state.currentZoomState.rescaleX(this.metricObject.xScale)
-          this.metricObject.xScale.domain(newXScale.domain())
+          // const newXScale = this.state.currentZoomState.rescaleX(this.metricObject.xScale)
+          // this.metricObject.xScale.domain(newXScale.domain())
  
           let joinYValue = this.metricBucket[x].split(" ")
           let joinWithUnderScore = joinYValue.join("_")
@@ -324,6 +358,46 @@ export default class DataCompressionComp extends Component {
 
   }
 
+  testFunction = (e) => {
+    e.preventDefault()
+    console.log("=========== objFilterdValue called =============")
+
+  }
+
+  filterGraphDataArrayFunction = (e) => {
+    e.preventDefault();
+    filterGraphDataArray = this.state.graphdata.filter(obj => {
+      
+      console.log("=========== objFilterdValue called 2222 =============")
+      let checkedYAxisArrayName =  JSON.parse(sessionStorage.getItem("checkedYAxisArrayName"))
+      for(let i=0; i< JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")).length; i++){
+        if(checkedYAxisArrayName.includes(obj.name)){
+          // console.log("================= filter graph data ================= 000000000000",document.getElementById("minValue"+checkedYAxisArrayName[i]))
+  
+          // let filteredYaxis = []
+          // for(let j=0; j<this.props.graphdata.length; j++){
+            if((obj.value > parseInt(document.getElementById("minValue"+obj.name).value))
+             && (obj.value < parseInt(document.getElementById("maxValue"+obj.name).value))
+             ){
+              console.log("================= filter graph data =================",obj.name, filterGraphDataArray, filterGraphDataArray.length, graphdata.length, document.getElementById("minValue"+obj.name).value, parseInt(document.getElementById("maxValue"+obj.name).value), typeof(parseInt(document.getElementById("maxValue"+obj.name).value)))
+  
+              return true
+            }
+          // }
+          // objFilteredValue[checkedYAxisArrayName[i]] = filteredYaxis
+  
+        }
+        else {
+          return true
+        }
+      }
+      // return true
+  
+    })
+    this.setState({graphdata: filterGraphDataArray})
+  }
+
+
   updateAxes() {
     this.metricObject.xAxis = d3.axisBottom(this.metricObject.xScale);
     // const dateRange = this.metricObject.xScale.domain();
@@ -370,20 +444,78 @@ export default class DataCompressionComp extends Component {
         if(!zoom){
           if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
             sessionStorage.setItem("checkedYAxisArray", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArray")), i]))
+            sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")), this.metricBucket[i]]))
+
           }
           else{
             sessionStorage.setItem("checkedYAxisArray", JSON.stringify([i]))
+            sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify([this.metricBucket[i]]))
+
           }
           node
           .attr("stroke", "#007BFF")
           .attr("stroke-width", "2")
           .attr("fill", "#007BFF")
           .attr("class", "isZoomTrue")
+
+          let divZoom =  document.getElementById("y-zoom-min-max")
+          let formElement =  document.createElement("form");
+          // formElement.setAttribute("onSubmit",{this.filterGraphData})
+          formElement.setAttribute("id","form"+this.metricBucket[i])
+          formElement.addEventListener("submit", this.filterGraphDataArrayFunction )
+
+          let heading5 = document.createElement("h5");
+          let h5textnode = document.createTextNode(this.metricBucket[i]);
+  
+          let labelMin = document.createElement("label");
+          labelMin.setAttribute("for", "minValue"+this.metricBucket[i])
+          let labelMinTextNode = document.createTextNode("Min:");
+          labelMin.appendChild(labelMinTextNode)
+  
+          let inputMin = document.createElement("input")
+          inputMin.setAttribute("style", 'width: 87px; margin-left: 2px')
+          inputMin.setAttribute("type", "text")
+          inputMin.setAttribute("id", "minValue"+this.metricBucket[i])
+          inputMin.setAttribute("name", "minValue"+this.metricBucket[i])
+  
+  
+          let labelMax = document.createElement("label");
+          labelMax.setAttribute("for", "maxValue"+this.metricBucket[i])
+          let labelMaxTextNode = document.createTextNode("Max:");
+          labelMax.setAttribute("style", "margin-left: 4px")
+          labelMax.appendChild(labelMaxTextNode)
+  
+          let inputMax = document.createElement("input")
+          inputMax.setAttribute("style", 'width: 87px; margin-left: 2px')
+          inputMax.setAttribute("type", "text")
+          inputMax.setAttribute("id", "maxValue"+this.metricBucket[i])
+          inputMax.setAttribute("name", "maxValue"+this.metricBucket[i])
+  
+          let inputSubmit = document.createElement("input")
+          inputSubmit.setAttribute("style", "margin-left: 4px")
+          // inputSubmit.setAttribute("onClick", "#")
+          inputSubmit.setAttribute("type", "submit")
+          inputSubmit.setAttribute("value", "Plot")
+  
+  
+          heading5.appendChild(h5textnode)
+          formElement.appendChild(heading5)
+          formElement.appendChild(labelMin)
+          formElement.appendChild(inputMin)
+          formElement.appendChild(labelMax)
+          formElement.appendChild(inputMax)
+          formElement.appendChild(inputSubmit)
+
+          divZoom.appendChild(formElement)
         }
         if(zoom){
           if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
             let filterCheckedYAxisArray = JSON.parse(sessionStorage.getItem("checkedYAxisArray")).filter(x => x != i)
+            let filterCheckedYAxisArrayName = JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")).filter(x => x != this.metricBucket[i])
+
             sessionStorage.setItem("checkedYAxisArray", JSON.stringify(filterCheckedYAxisArray))
+            sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify(filterCheckedYAxisArrayName))
+
           }
 
           node
@@ -391,6 +523,9 @@ export default class DataCompressionComp extends Component {
           .attr("stroke-width", "2")
           .attr("fill", "white")    
           .attr("class", "isZoomFalse")
+
+          let formElementToRemove = document.getElementById("form"+this.metricBucket[i])
+          formElementToRemove.remove()
         }
         node.classed('isZoom', !zoom);
       });
@@ -474,8 +609,12 @@ export default class DataCompressionComp extends Component {
         bisectorValues.push(bisector)
       });
 
+      // let tooltipString;
+      // if(this.metricObject['data_FDA50'][bisectorValues[0]] === undefined){
+      //   tooltipString = `div style="color: white">No data</div>`
+      // } else {
       tooltipLine
-        .attr('stroke', 'red')
+        .attr('stroke', 'black')
         .attr('x1', this.metricObject.xScale(tickDates[0])) 
         .attr('x2', this.metricObject.xScale(tickDates[0]))
         .attr('y1', 0)
@@ -483,19 +622,20 @@ export default class DataCompressionComp extends Component {
 
       // Create the tooltip.
       const xFormat = d3.timeFormat("%d-%b %H:%M");
-      let tooltipString = `<div style="color: white">${xFormat(cursorDate)}</div>`
+      let tooltipString = `<div style="color: black, font-weight: bold">${xFormat(cursorDate)}</div>`
       this.metricBucket.forEach((m, i) => {
         const p = this.join(m);
         const yFormat = this.metricObject['yScale_' + p].tickFormat()
         tooltipString += `
-        <div style="color: ${this.color[i]}">${p}: ${yFormat(this.metricObject['data_' + p][bisectorValues[i]].value)}</div>
+        <div style="color: ${this.color[i]}">${p}: ${yFormat(this.metricObject['data_' + p][bisectorValues[i]] && this.metricObject['data_' + p][bisectorValues[i]].value)}</div>
         `
       });
+    // }
 
       tooltip.html(tooltipString)
         .style('display', 'block')
         .style('left', `${d3.event.pageX + 20}px`)
-        .style('top', `${d3.event.pageY + 20}px`)
+        .style('top', `${d3.event.pageY - 120}px`)
     }
 
     const removeTooltip = ()=> {
@@ -521,7 +661,37 @@ export default class DataCompressionComp extends Component {
     });
   }
 
+  filterGraphData = (e) => {
+    e.preventDefault();
+    console.log("============== in filter graph data ==========================")
+    let allZoomYAxisCirlce = JSON.parse(sessionStorage.getItem("checkedYAxisArrayName"))
+    for(let i=0; i<allZoomYAxisCirlce.length; i++){
+      let selectZoomCircle = document.getElementById(allZoomYAxisCirlce[i])
+      const node = d3.select(selectZoomCircle);
+
+      node
+      .attr("stroke", "#007BFF")
+      .attr("stroke-width", "2")
+      .attr("fill", "#007BFF")
+      .attr("class", "isZoomTrue")
+      console.log("=========is queryselector all ============",selectZoomCircle, "allzoomycircle ====>", allZoomYAxisCirlce, "allzoomcircleLength ====>>>>",allZoomYAxisCirlce.length)
+
+
+      // selectZoomCircle.setAttribute("fill", "#007BFF")
+    }
+
+
+
+    
+      let objFilteredValue = {}
+
+
+
+      // this.setState({graphdata: filterGraphDataArray})
+  }
+
   render() {
+    console.log("==== metric bucket ========", this.metricBucket[0])
     return (
       <React.Fragment>
       <div className="graphDC">
@@ -529,7 +699,8 @@ export default class DataCompressionComp extends Component {
           <div id='comparisonChart'>
             <svg
               id='comparisonChartSVG'
-              width='1050'
+              // width='1050'
+              width='850'
               height='550'
               // viewBox="0 0 800 300"
               ref={node => (this.node = node)}
@@ -543,15 +714,36 @@ export default class DataCompressionComp extends Component {
               // viewBox="0 0 800 300"
               ref={node => (this.axisnode = node)}
             ></svg>
-
-            {/* <div>
+            <div id="minMaxContainer">         
+              <div id="y-zoom-min-max">
+              {/* <form onSubmit={this.filterGraphData}>
+                <h5>FD2003</h5>
                 <label for="fname">Min:</label>
-                <input type="text" id="fname" name="fname"/>
-                <label for="lname">Max:</label>
-                <input type="text" id="lname" name="lname"/>
-            </div> */}
+                <input  style={{"width": "87px", "marginLeft": "2px"}} type="text" id="fname" name="fname"/>
+                <label style={{"marginLeft": "10px"}} for="lname">Max:</label>
+                <input style={{"width": "87px", "marginLeft": "2px"}} type="text" id="lname" name="lname"/>
+                <input style={{"marginLeft": "10px"}} type="submit" value="Plot"></input>
+            </form> */}
+              </div>
+              {/* <input class="plotMinMax" onClick={this.filterGraphData} style={{"marginLeft": "10px"}} type="submit" value="Plot"></input> */}
+            </div>
+            {/* {
+            JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0
+            ? */}
+            {/* <input class="plotMinMax" onClick={this.filterGraphData} style={{"marginLeft": "10px"}} type="submit" value="Plot"></input> */}
+            {/* :
+            ""
+            } */}
+
           </div>
-          <div id='tooltip' style={{position: 'absolute', backgroundColor: 'black', opacity: '0.8', padding: '0.5rem', borderRadius: '5px', boxShadow: '0 0 10px 0 rgba(0,0,0,.15)', pointerEvents: 'none', display:'none'}} ref={node => (this.tooltipNode = node)}></div>
+          <div id='tooltip' style={{position: 'absolute', 
+                                    backgroundColor: '#e5e5e5', 
+                                    // opacity: '0.9', 
+                                    padding: '0.5rem', 
+                                    borderRadius: '5px', 
+                                    // boxShadow: '0 0 10px 0 rgba(0,0,0,.15)', 
+                                    pointerEvents: 'none', display:'none'}} 
+                            ref={node => (this.tooltipNode = node)}></div>
         </div>
         <div>
         <Button variant="default" style={{marginTop: "-91px", marginLeft: "19px"}} disabled>
