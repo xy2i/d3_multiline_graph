@@ -449,6 +449,8 @@ var graphdata = [
       .on("click", (d, j, n) => {
         const node = d3.select(n[j]);
         const zoom = node.classed('isZoom');
+        console.log("-------- is zooooo mmmm 11111111111111111111 if",zoom)
+
         if(!zoom){
           if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
             sessionStorage.setItem("checkedYAxisArray", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArray")), i]))
@@ -556,7 +558,7 @@ var graphdata = [
             ') rotate(90)'
         )  
         .append('circle')
-        .attr("class", "isZoomFalse")
+        .attr("class", "isZoomTrue isZoom")
         .attr("id", "circle"+this.metricBucket[i])
         .attr('cx', '-1')
         .attr("cy", "8")
@@ -567,6 +569,7 @@ var graphdata = [
         .on("click", (d, j, n) => {
           const node = d3.select(n[j]);
           const zoom = node.classed('isZoom');
+          console.log("-------- is zooooo mmmm 2222222222222222222",zoom)
           if(!zoom){
             if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
               sessionStorage.setItem("checkedYAxisArray", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArray")), i]))
@@ -585,8 +588,7 @@ var graphdata = [
             .attr("class", "isZoomTrue")
           // if ((document.querySelector("#circlePD306") == null) || (document.querySelector("#circlePD306") && document.querySelector("#circlePD306").getAttribute("fill") == "#007BFF")){
           // if((document.querySelector("#formPD306") == null) && (document.querySelector("#formPD306") && document.querySelectorAll("#formPD306").length != 1)){
-          if(true){
-            let divZoom =  document.getElementById("y-zoom-min-max")  
+          if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && !JSON.parse(sessionStorage.getItem("checkedYAxisArrayName").includes(this.metricBucket[i]))){            let divZoom =  document.getElementById("y-zoom-min-max")  
             let formElement =  document.createElement("form");
             // formElement.setAttribute("onSubmit",{this.filterGraphData})
             formElement.setAttribute("id","form"+this.metricBucket[i])
