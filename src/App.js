@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
-
+var filterGraphDataArrayName = []
 var filterGraphDataArray = [
   {"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:55:55Z"},{"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:20:55Z"},{"name":"FD203","value":"0.000406667","unit":"m3/s","date":"2020-07-13T19:30:55Z"},
     {"name":"FD2033333","value":"0.000403333","unit":"m3/s","date":"2020-07-13T17:48:35Z"},
@@ -367,20 +367,22 @@ var graphdata = [
 
   filterGraphDataArrayFunction = (e) => {
     e.preventDefault();
-    filterGraphDataArray = this.state.graphdata.filter(obj => {
+    var abc = graphdata.filter(obj => {
       
-      console.log("=========== objFilterdValue called 2222 =============")
       let checkedYAxisArrayName =  JSON.parse(sessionStorage.getItem("checkedYAxisArrayName"))
       for(let i=0; i< JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")).length; i++){
+        console.log("0000000000")
+
         if(checkedYAxisArrayName.includes(obj.name)){
+          console.log("11111111111111111111111", Number(document.getElementById("minValue"+obj.name).value), Number(document.getElementById("maxValue"+obj.name).value))
           // console.log("================= filter graph data ================= 000000000000",document.getElementById("minValue"+checkedYAxisArrayName[i]))
   
           // let filteredYaxis = []
           // for(let j=0; j<this.props.graphdata.length; j++){
-            if((obj.value > parseInt(document.getElementById("minValue"+obj.name).value))
-             && (obj.value < parseInt(document.getElementById("maxValue"+obj.name).value))
+            if((obj.value > Number(document.getElementById("minValue"+obj.name).value))
+             && (obj.value < Number(document.getElementById("maxValue"+obj.name).value))
              ){
-              console.log("================= filter graph data =================",obj.name, filterGraphDataArray, filterGraphDataArray.length, graphdata.length, document.getElementById("minValue"+obj.name).value, parseInt(document.getElementById("maxValue"+obj.name).value), typeof(parseInt(document.getElementById("maxValue"+obj.name).value)))
+              console.log("================= filter graph data =================",obj.name, Number(document.getElementById("minValue"+obj.name).value), Number(document.getElementById("maxValue"+obj.name).value))
   
               return true
             }
@@ -393,9 +395,11 @@ var graphdata = [
         }
       }
       // return true
-  
+      // console.log("=========== objFilterdValue  2222 in function =============", abc, abc.length, parseInt(document.getElementById("minValue"+obj.name).value), parseInt(document.getElementById("maxValue"+obj.name).value))
+
     })
-    this.setState({graphdata: filterGraphDataArray})
+    console.log("=========== objFilterdValue  2222 in function =============", abc, abc.length)
+    this.setState({graphdata: abc})
   }
 
 
@@ -446,7 +450,7 @@ var graphdata = [
         if(!zoom){
           if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
             sessionStorage.setItem("checkedYAxisArray", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArray")), i]))
-            sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify(Array(new Set([...JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")), this.metricBucket[i]]))))
+            sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")), this.metricBucket[i]]))
 
           }
           else{
@@ -697,7 +701,7 @@ var graphdata = [
   }
 
   render() {
-    // console.log("==== circle Selection ========",JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")).includes("PD306") )
+    console.log("==== Graph Data ======== RENDER", this.state.graphdata.length)
     return (
       <React.Fragment>
       <div className="graphDC">
