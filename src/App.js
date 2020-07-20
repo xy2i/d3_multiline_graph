@@ -184,6 +184,7 @@ var graphdata = [
     '#9edae5'
   ];
   componentDidMount() {
+    sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify([]))
     // this.metricBucket = [
     //   "Alarm Status",
     //   "Booster Case Temperature",
@@ -432,6 +433,7 @@ var graphdata = [
       )  
       .append('circle')
       .attr("class", "isZoomFalse")
+      .attr("id", "circle"+this.metricBucket[i])
       .attr('cx', '-1')
       .attr("cy", "8")
       .attr("r", "8")
@@ -444,7 +446,7 @@ var graphdata = [
         if(!zoom){
           if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
             sessionStorage.setItem("checkedYAxisArray", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArray")), i]))
-            sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify([...JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")), this.metricBucket[i]]))
+            sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify(Array(new Set([...JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")), this.metricBucket[i]]))))
 
           }
           else{
@@ -457,8 +459,10 @@ var graphdata = [
           .attr("stroke-width", "2")
           .attr("fill", "#007BFF")
           .attr("class", "isZoomTrue")
-
-          let divZoom =  document.getElementById("y-zoom-min-max")
+        // if ((document.querySelector("#circlePD306") == null) || (document.querySelector("#circlePD306") && document.querySelector("#circlePD306").getAttribute("fill") == "#007BFF")){
+        // if((document.querySelector("#formPD306") == null) && (document.querySelector("#formPD306") && document.querySelectorAll("#formPD306").length != 1)){
+        if(true){
+          let divZoom =  document.getElementById("y-zoom-min-max")  
           let formElement =  document.createElement("form");
           // formElement.setAttribute("onSubmit",{this.filterGraphData})
           formElement.setAttribute("id","form"+this.metricBucket[i])
@@ -466,38 +470,38 @@ var graphdata = [
 
           let heading5 = document.createElement("h5");
           let h5textnode = document.createTextNode(this.metricBucket[i]);
-  
+
           let labelMin = document.createElement("label");
           labelMin.setAttribute("for", "minValue"+this.metricBucket[i])
           let labelMinTextNode = document.createTextNode("Min:");
           labelMin.appendChild(labelMinTextNode)
-  
+
           let inputMin = document.createElement("input")
           inputMin.setAttribute("style", 'width: 87px; margin-left: 2px')
           inputMin.setAttribute("type", "text")
           inputMin.setAttribute("id", "minValue"+this.metricBucket[i])
           inputMin.setAttribute("name", "minValue"+this.metricBucket[i])
-  
-  
+
+
           let labelMax = document.createElement("label");
           labelMax.setAttribute("for", "maxValue"+this.metricBucket[i])
           let labelMaxTextNode = document.createTextNode("Max:");
           labelMax.setAttribute("style", "margin-left: 4px")
           labelMax.appendChild(labelMaxTextNode)
-  
+
           let inputMax = document.createElement("input")
           inputMax.setAttribute("style", 'width: 87px; margin-left: 2px')
           inputMax.setAttribute("type", "text")
           inputMax.setAttribute("id", "maxValue"+this.metricBucket[i])
           inputMax.setAttribute("name", "maxValue"+this.metricBucket[i])
-  
+
           let inputSubmit = document.createElement("input")
           inputSubmit.setAttribute("style", "margin-left: 4px")
           // inputSubmit.setAttribute("onClick", "#")
           inputSubmit.setAttribute("type", "submit")
           inputSubmit.setAttribute("value", "Plot")
-  
-  
+
+
           heading5.appendChild(h5textnode)
           formElement.appendChild(heading5)
           formElement.appendChild(labelMin)
@@ -507,6 +511,8 @@ var graphdata = [
           formElement.appendChild(inputSubmit)
 
           divZoom.appendChild(formElement)
+        }
+
         }
         if(zoom){
           if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
@@ -691,7 +697,7 @@ var graphdata = [
   }
 
   render() {
-    console.log("==== metric bucket ========", this.metricBucket[0])
+    // console.log("==== circle Selection ========",JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")).includes("PD306") )
     return (
       <React.Fragment>
       <div className="graphDC">
