@@ -33,30 +33,30 @@ var filterGraphDataArray = [
   {"name":"FD2033333","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:09:35Z"}]
 
 var graphdata = [
-  // {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:52:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:04:55Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:23:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:49:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:54:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:58:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:05:15Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:42:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:55:55Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:04:15Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:20:55Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:03:55Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:24:55Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:27:15Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:48:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:50:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:53:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:00:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:05:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:09:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:30:55Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:41:35Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:43:15Z"},
-//  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:03:15Z"},
+  {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:52:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:04:55Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:23:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:49:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:54:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:58:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:05:15Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:42:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:55:55Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:04:15Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:20:55Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:03:55Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:24:55Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:27:15Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:48:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:50:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T17:53:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:00:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:05:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T18:09:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:30:55Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:41:35Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T19:43:15Z"},
+ {"name":"FDA50","value":"0","unit":"m3","date":"2020-07-13T20:03:15Z"},
  //FD203
  {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T17:48:35Z"},
  {"name":"FD203","value":"0.000403333","unit":"m3/s","date":"2020-07-13T18:00:35Z"},
@@ -83,30 +83,30 @@ var graphdata = [
  {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T19:42:35Z"},
  {"name":"FD203","value":"0.000405","unit":"m3/s","date":"2020-07-13T18:09:35Z"},
  //Combustor Temp
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:55:55Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:03:15Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:04:15Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:27:15Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:48:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:49:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:52:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:41:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:42:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:03:55Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:53:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:05:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:09:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:50:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:54:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:58:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:00:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:05:15Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:20:55Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:30:55Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:43:15Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:04:55Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:23:35Z"},
-//  {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:24:55Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:55:55Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:03:15Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:04:15Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:27:15Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:48:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:49:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:52:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:41:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:42:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:03:55Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:53:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:05:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:09:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:50:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:54:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T17:58:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:00:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T18:05:15Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:20:55Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:30:55Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T19:43:15Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:04:55Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:23:35Z"},
+ {"name":"Combustor Temp","value":"0","unit":"K","date":"2020-07-13T20:24:55Z"},
  //PD306
  {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:48:35Z"},
  {"name":"PD306","value":"-83","unit":"Pa","date":"2020-07-13T17:50:35Z"},
@@ -448,8 +448,7 @@ var graphdata = [
       .attr("fill", "white")
       .on("click", (d, j, n) => {
         const node = d3.select(n[j]);
-        const zoom = node.classed('isZoom');
-        console.log("-------- is zooooo mmmm 11111111111111111111 if",zoom)
+        const zoom = node.classed('isZoom');      
 
         if(!zoom){
           if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
@@ -462,6 +461,19 @@ var graphdata = [
             sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify([this.metricBucket[i]]))
 
           }
+          let submitButton = document.querySelectorAll("#submit")
+          console.log("-------- is zooooo mmmm 11111111111111111111 if",zoom, submitButton, document.querySelectorAll("form"))
+          for(let i=0; i<submitButton.length; i++){
+            submitButton[i].remove()
+          }
+          // let formElementArray = document.querySelectorAll("form")
+          // let inputSubmitOnDeselect = document.createElement("input")
+          // inputSubmitOnDeselect.setAttribute("style", "margin-left: 4px")
+          // inputSubmitOnDeselect.setAttribute("type", "submit")
+          // inputSubmitOnDeselect.setAttribute("id", "submit")
+          // inputSubmitOnDeselect.setAttribute("value", "Plot")
+          // formElementArray[formElementArray.length -1].appendChild(inputSubmitOnDeselect)
+          
           node
           .attr("stroke", "#007BFF")
           .attr("stroke-width", "2")
@@ -503,7 +515,10 @@ var graphdata = [
           let inputSubmit = document.createElement("input")
           inputSubmit.setAttribute("style", "margin-left: 4px")
           // inputSubmit.setAttribute("onClick", "#")
+          // if(JSON.parse(sessionStorage.getItem("checkedYAxisArrayName"))[JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")).length - 1]  == this.metricBucket[i]){
           inputSubmit.setAttribute("type", "submit")
+          inputSubmit.setAttribute("id", "submit")
+          // }
           inputSubmit.setAttribute("value", "Plot")
 
 
@@ -518,6 +533,8 @@ var graphdata = [
           divZoom.appendChild(formElement)
         }
         if(zoom){
+          console.log("-------- is zooooo mmmm 22222222222222 if",document.querySelectorAll("form"),document.querySelectorAll("form").length, i)
+
           if(JSON.parse(sessionStorage.getItem("checkedYAxisArray")) && JSON.parse(sessionStorage.getItem("checkedYAxisArray")).length > 0){
             let filterCheckedYAxisArray = JSON.parse(sessionStorage.getItem("checkedYAxisArray")).filter(x => x != i)
             let filterCheckedYAxisArrayName = JSON.parse(sessionStorage.getItem("checkedYAxisArrayName")).filter(x => x != this.metricBucket[i])
@@ -526,6 +543,32 @@ var graphdata = [
             sessionStorage.setItem("checkedYAxisArrayName", JSON.stringify(filterCheckedYAxisArrayName))
 
           }
+
+          let submitButton = document.querySelectorAll("#submit")
+          console.log("-------- is zooooo mmmm 11111111111111111111 if",zoom, submitButton, document.querySelectorAll("form"))
+          for(let i=0; i<submitButton.length; i++){
+            submitButton[i].remove()
+          }
+          
+          let formElementArray = document.querySelectorAll("form")
+          let inputSubmitOnDeselect = document.createElement("input")
+          inputSubmitOnDeselect.setAttribute("style", "margin-left: 4px")
+          inputSubmitOnDeselect.setAttribute("type", "submit")
+          inputSubmitOnDeselect.setAttribute("id", "submit")
+          inputSubmitOnDeselect.setAttribute("value", "Plot")
+          // if(formElementArray.length > 1 && ((i == formElementArray.length) || (i == formElementArray.length - 1))){
+          //   formElementArray[formElementArray.length -2].appendChild(inputSubmitOnDeselect)
+          // }
+          if(formElementArray.length > 1){
+            // if(i == formElementArray.length - 1){
+            //   formElementArray[formElementArray.length - 2].appendChild(inputSubmitOnDeselect)
+            // }
+            // if(i == formElementArray.length){
+            //   formElementArray[formElementArray.length - 2].appendChild(inputSubmitOnDeselect)
+            // }
+            formElementArray[formElementArray.length - 2].appendChild(inputSubmitOnDeselect)
+          }
+        
 
           node
           .attr("stroke", "#007BFF")
